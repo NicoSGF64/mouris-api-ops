@@ -1,0 +1,18 @@
+PROJECT_NAME 			= mourisAPIos
+PROJECT_BRIEF			= "Unha API REST para a xestión do patrimonio da contorna de Mouriscados"
+PROJECT_ICON			= @CMAKE_CURRENT_SOURCE_DIR@/docs/img/mouriscados_logo_html.png
+
+IMAGE_PATH				= @CMAKE_CURRENT_SOURCE_DIR@/docs/img/
+OUTPUT_DIRECTORY		= @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
+INPUT					= @CMAKE_CURRENT_SOURCE_DIR@/src/ @CMAKE_CURRENT_SOURCE_DIR@/docs
+HTML_EXTRA_STYLESHEET 	= @CMAKE_CURRENT_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome.css
+GENERATE_LATEX			= NO
+HTML_FOOTER				= ""
+
+GENERATE_TREEVIEW		= YES
+SHOW_FILES 				= NO
+SHOW_USED_FILES			= NO
+
+DISABLE_INDEX 			= NO
+FULL_SIDEBAR 			= NO
+HTML_COLORSTYLE			= LIGHT # required with Doxygen >= 1.9.5
