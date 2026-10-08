@@ -4,14 +4,11 @@ PROJECT_ICON			= ./docs/img/mouriscados_logo_html.png
 
 IMAGE_PATH				= ./docs/img/
 OUTPUT_DIRECTORY		= ./docs/
-INPUT					= ../src/ ./docs
+INPUT					= ./src/ ./docs
 HTML_EXTRA_STYLESHEET 	= ./docs/doxygen-awesome-css/doxygen-awesome.css
 GENERATE_LATEX			= NO
-HTML_FOOTER				= ""
 
 GENERATE_TREEVIEW		= YES
-SHOW_FILES 				= NO
-SHOW_USED_FILES			= NO
 
 DISABLE_INDEX 			= NO
 FULL_SIDEBAR 			= NO
