@@ -4,7 +4,7 @@ mourisAPIos é unha API REST básica para o almacenamento de bens culturais ecle
 
 ## Capacidades
 
-mourisAPIos fornece soporte para o rexistro dixitalizado de bens inmobles tales coma pilas bautismais, altares, campás, etc., toda clase de esculturas e información sobre [lápidas](./lapida.md), podendo recoller en detalle moitos dos aspectos destes. En adición ao previo, a API permite xestionar usuarios de varios tipos.
+mourisAPIos fornece soporte para o rexistro dixitalizado de bens inmobles tales coma pilas bautismais, altares, campás, etc., toda clase de esculturas e información sobre lápidas, podendo recoller en detalle moitos dos aspectos destes. En adición ao previo, a API permite xestionar usuarios de varios tipos.
 
 ## Documentación
 
