@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.18.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>mourisAPIos: Related Pages</title>
+<title>mourisAPIos: Xestión de Sesións</title>
 <link rel="icon" href="mouriscados_logo_html.png" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', codefold.init);
   </div>
 </div>
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded',() => { initNavTree('pages.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_docs_2sesion.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -110,25 +110,60 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('pages.html',''
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Related Pages</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Xestión de Sesións </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all related documentation pages:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2benpatrimonial.html" target="_self">Bens Patrimoniais</a></td><td class="desc"></td></tr>
-<tr id="row_1_" class="odd"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2erros.html" target="_self">Erros comúns</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2escultura.html" target="_self">Esculturas</a></td><td class="desc"></td></tr>
-<tr id="row_3_" class="odd"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2imaxe.html" target="_self">Xestión e suba de imaxes</a></td><td class="desc"></td></tr>
-<tr id="row_4_" class="even"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2lapida.html" target="_self">Lápidas</a></td><td class="desc"></td></tr>
-<tr id="row_5_" class="odd"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2material.html" target="_self">Materiais</a></td><td class="desc"></td></tr>
-<tr id="row_6_" class="even"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2motivodecorativo.html" target="_self">Motivos Decorativos</a></td><td class="desc"></td></tr>
-<tr id="row_7_" class="odd"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2sesion.html" target="_self">Xestión de Sesións</a></td><td class="desc"></td></tr>
-<tr id="row_8_" class="even"><td class="entry"><span class="spacer">&#160;</span><a class="el" href="md_docs_2usuario.html" target="_self">Usuarios</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><p><a class="anchor" id="autotoc_md205"></a></p>
+<p>Tódalas peticións dirixidas ao servidor que conten a base de datos deben estar asignadas a unha sesión que fora creada previamente a esta, que debe ser pechada cando non se van facer máis peticións ao servidor. A xestión de sesións faise sobre a URI <span class="tt">/autenticar</span>.</p>
+<p>As sesións por defecto teñen unha validez de media hora, que é renovada ao facer calquera operación sobre o servidor. Se caduca unha sesión, esta debe volver a iniciarse.</p>
+<p>Toda petición feita sobre o servidor, incluída estas, debe levar na cabeceira unha autenticación de tipo <span class="tt">Basic</span> co nome e contrasinal do usuario codificado en base 64 en formato <span class="tt">nome:contrasinal</span>. O nome non debe conter dous puntos.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md206"></a>
+Iniciar sesión</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md207"></a>
+Petición HTTP</h2>
+<ul>
+<li>Método: <span class="tt">POST /autenticar</span>.</li>
+<li>Parámetros: Ningún, salvo o valor da cabeceira <span class="tt">Authorization</span> posto correctamente.</li>
+<li>Devolve: Código HTTP 200 se a modificación fíxose correctamente.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md208"></a>
+Erros</h2>
+<p>Esta operación devolve os <a class="el" href="md_docs_2erros.html" title="Erros comúns">erros comúns</a> xunto cun erro HTTP 403 de contido</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;error&quot;: &quot;Erro de autenticación&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>en caso de que xa exista a sesión e un erro HTTP 401 de contido</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;error&quot;: &quot;Nome de usuario ou contrasinal incorrectas&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>en caso de que o usuario ou contrasinal non sexan correctas.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md209"></a>
+Pechar sesión</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md210"></a>
+Petición HTTP</h2>
+<ul>
+<li>Método: <span class="tt">DELETE /autenticar</span>.</li>
+<li>Parámetros: Ningún, salvo o valor da cabeceira <span class="tt">Authorization</span> posto correctamente.</li>
+<li>Devolve: Código HTTP 200 se o borrado foi completado correctamente.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md211"></a>
+Erros</h2>
+<p>Esta operación devolve os <a class="el" href="md_docs_2erros.html" title="Erros comúns">erros comúns</a> xunto cun erro HTTP 403 de contido</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;error&quot;: &quot;Erro de autenticación&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>en caso de que non exista a sesión a borrar ou o usuario ou contrasinal estean incorrectos. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
